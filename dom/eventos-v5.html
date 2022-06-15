@@ -9,6 +9,10 @@
     </p>
     <a v-on:click="naoNavegar" href="http://google.com.br">Google</a>
     <a v-on:click.prevent="" href="http://google.com.br">Google</a>
+    <hr>
+    <input type="text" v-on:keyup="exibirAlerta">
+    <input type="text" v-on:keyup.enter="exibirAlertaEnter">
+    <input type="text" v-on:keyup.enter.alt="exibirAlertaEnterAlt">
 </div>
 
 <script>
@@ -33,6 +37,15 @@
             },
             parar(event){
                 event.stopPropagation()
+            },
+            exibirAlerta(){
+                alert("Estou te alertando!")
+            },
+            exibirAlertaEnter(){
+                alert("Você teclou o 'enter'")
+            },
+            exibirAlertaEnterAlt(){
+                alert("Você teclou o 'enter ' + 'alt'")
             }
         }
     })
