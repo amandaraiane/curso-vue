@@ -1,0 +1,46 @@
+<meta charset="utf-8">
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="(cor, i) in cores">{{ i }}) {{ cor }}</li>
+    </ul>
+
+    <hr>
+
+    <template v-for="(cor, i) in cores">
+        <p>{{ i }}</p>
+        <h3>{{ cor }}</h3>
+    </template>
+
+    <hr>
+
+    <ul v-for="pessoa in pessoas">
+       <li>
+            <!--{{ pessoa.nome }}-->
+
+            <span v-for="(valor, chave, index) in pessoa">
+                {{ chave }} = {{ valor }} | {{ index }} |
+            </span>
+       </li> 
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cores: ['amarelo', 'azul', 'preto', 'laranja'],
+            pessoas: [
+                {nome: 'Amanda', idade: 24, peso: 65},
+                {nome: 'Maria', idade: 22, peso: 60}
+            ]
+        }
+    })
+</script>
+
+<style>
+    ul{
+        list-style: none;
+    }
+</style>
