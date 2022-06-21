@@ -1,0 +1,44 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<!--é possível utilizar duas instancias vue em uma mesma página, porém não é recomendado-->
+
+<div id="app1">
+    {{ titulo1 }} <!--se for chamado o {{ titulo2 }} aqui, retornará um erro no console, pois ele pertence a outra instancia-->
+    <button @click="alterar1">Alterar2</button>
+</div>
+
+<div id="app2">
+    {{ titulo2 }}
+    <button @click="alterar2">Alterar1</button>
+</div>
+
+<script>
+    const vm1 = new Vue ({
+        el: '#app1',
+        data:{
+            titulo1: "Teste1"
+        },
+        methods:{
+            alterar1(){
+                vm2.titulo2 += '????'/*acessando a outra instancia e alterando os dados dela*/
+            }
+        }
+    })
+
+    const vm2 = new Vue ({
+        el: '#app2',
+        data:{
+            titulo2: "Teste2"
+        },
+        methods:{
+            alterar2(){
+                vm1.titulo1 += '!!!!' /*acessando a outra instancia e alterando os dados dela*/
+            }
+        }
+    })
+
+    /*alterando dados da instancia vue, diretamente pelo javascript*/
+    setTimeout(() =>{
+        vm1.titulo1 = 'Alterado pelo timer'
+    }, 2000)
+</script>
